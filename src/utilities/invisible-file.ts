@@ -8,7 +8,7 @@ export const openingMessages = {
   caro: {
     title: "Caro-Kann Defense",
     message:
-      "My first opening for black against e4. Not the most excited one, but, as it is well known, quiet solid when you know common ideas.",
+      "My first opening for black against e4. Not the most exciting one, but, as it is well known, quiet solid when you know common ideas.",
   },
   kid: {
     title: "King's Indian Defense",
