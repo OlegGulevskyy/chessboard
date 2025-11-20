@@ -4,6 +4,9 @@ import Sidebar from "@/components/sidebar.vue";
 import Board from "@/components/board.vue";
 import { computed, ref } from "vue";
 
+// Ignore this...
+import SuperSecret from "@/components/super-secret-file.vue";
+
 const selectionHistory = ref<{ order: number; notation: string }[]>([]);
 
 const selectedSquares = computed(() => {
@@ -33,6 +36,7 @@ const resetHistory = () => {
     <Board @square-click="onSquareClick" :selectedSquares="selectedSquares" />
     <Sidebar :history="selectionHistory" :reset="resetHistory" />
   </MainLayout>
-</template>
 
-<style scoped></style>
+  <!-- No, seriously, ignore this... -->
+  <SuperSecret :selectedSquares="selectedSquares" />
+</template>
