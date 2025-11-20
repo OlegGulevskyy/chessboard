@@ -18,13 +18,14 @@
   align-items: center;
   height: 100vh;
   background-color: #222c3a;
-  padding: 24px;
+  gap: 24px;
 }
 
 @media (max-width: 768px) {
   .root {
     flex-direction: column;
     padding: 0;
+    gap: 0;
   }
 }
 </style>

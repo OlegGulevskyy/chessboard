@@ -16,18 +16,21 @@ const onSquareClick = ({ notation }: { notation: string }) => {
   if (selectedSquares.value.has(notation)) {
     return;
   }
-
   selectionHistory.value.push({
     order: selectionHistory.value.length + 1,
     notation,
   });
+};
+
+const resetHistory = () => {
+  selectionHistory.value = [];
 };
 </script>
 
 <template>
   <MainLayout>
     <Board @square-click="onSquareClick" :selectedSquares="selectedSquares" />
-    <Sidebar :history="selectionHistory" />
+    <Sidebar :history="selectionHistory" :reset="resetHistory" />
   </MainLayout>
 </template>
 

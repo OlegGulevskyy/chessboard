@@ -1,13 +1,17 @@
 <script setup lang="ts">
-const { history } = defineProps<{
+const { history, reset } = defineProps<{
   history: { order: number; notation: string }[];
+  reset: () => void;
 }>();
 </script>
 
 <template>
   <section>
     <div class="selection">
-      <h1>Selection history</h1>
+      <h1>Selections history</h1>
+      <div>
+        <button @click="reset">Reset</button>
+      </div>
       <div class="history">
         <div v-for="item in history" :key="item.order + item.notation">
           {{ item.order }}. {{ item.notation }}
@@ -20,14 +24,20 @@ const { history } = defineProps<{
 <style scoped>
 section {
   height: 100%;
-  width: 35%;
+  min-width: 300px;
+  max-width: 400px;
   display: flex;
 }
 
 @media (max-width: 768px) {
   section {
     width: 100%;
+    flex: 1;
+    min-height: 0;
+    min-width: unset;
+    max-width: unset;
     align-items: flex-start;
+    overflow: hidden;
   }
 }
 
@@ -42,6 +52,21 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 24px;
   background-color: #333;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .selection {
+    padding: 16px;
+    gap: 12px;
+    height: 100%;
+  }
+}
+
+.history {
+  overflow-y: auto;
+  height: 100%;
 }
 </style>

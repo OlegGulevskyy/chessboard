@@ -1,13 +1,8 @@
-import { getNotationFromFileAndRank } from "@/utilities/notations";
+import type { SquareT } from "@/types";
+import { getNotationFromFileAndRank, RANK_INDEX } from "@/utilities/notations";
 
-export const buildSquares = ({
-  ranks,
-  files,
-}: {
-  ranks: number;
-  files: number;
-}) => {
-  const squares: { notation: string; rank: number; file: number }[] = [];
+export const buildSquares = (ranks = 8, files = 8) => {
+  const squares: SquareT[] = [];
   for (let rank = 0; rank < ranks; rank++) {
     for (let file = 0; file < files; file++) {
       squares.push(getNotationFromFileAndRank({ file, rank }));
@@ -25,3 +20,6 @@ export const isSquareDark = ({
 }) => {
   return (file + rank) % 2 === 1;
 };
+
+export const isFirstFile = (file: number) => file === 0;
+export const isFirstRank = (rank: number) => rank === RANK_INDEX - 1;

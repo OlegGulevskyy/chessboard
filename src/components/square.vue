@@ -1,25 +1,21 @@
 <script setup lang="ts">
-import { isSquareDark } from "@/utilities/board";
+import { isSquareDark, isFirstFile, isFirstRank } from "@/utilities/board";
+import type { SquareT } from "@/types";
 
 const { square, isSelected } = defineProps<{
-  square: {
-    file: number;
-    rank: number;
-    notation: string;
-  };
+  square: SquareT;
   isSelected: boolean;
 }>();
-
 const emit = defineEmits<{
-  (
-    e: "square-click",
-    square: { file: number; rank: number; notation: string }
-  ): void;
+  (e: "square-click", square: SquareT): void;
 }>();
 
 const handleClick = () => {
   emit("square-click", square);
 };
+
+const fileLetter = (square: string) => square.split("")[0];
+const rankNumber = (square: string) => square.split("")[1];
 </script>
 
 <template>
@@ -36,7 +32,12 @@ const handleClick = () => {
         : 'square__light',
     ]"
   >
-    {{ square.notation }}
+    <div v-if="isFirstFile(square.file)" :class="['rank']">
+      {{ rankNumber(square.notation) }}
+    </div>
+    <div v-if="isFirstRank(square.rank)" :class="['file']">
+      {{ fileLetter(square.notation) }}
+    </div>
   </div>
 </template>
 
@@ -50,17 +51,32 @@ const handleClick = () => {
   width: 100%;
   height: 100%;
   cursor: pointer;
+  position: relative;
 }
 
 .square__dark {
   background-color: #739552;
+  color: #ebecd0;
 }
 .square__light {
   background-color: #ebecd0;
+  color: #739552;
 }
 .square__selected {
   box-shadow:
     inset 0 0 0 3px rgba(255, 48, 92, 1),
     inset 0 0 10px rgba(255, 48, 92, 1);
+}
+
+.file {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+
+.rank {
+  position: absolute;
+  top: 8px;
+  left: 8px;
 }
 </style>

@@ -1,19 +1,16 @@
 <script setup lang="ts">
 import Square from "@/components/square.vue";
+import type { SquareT } from "@/types";
 import { buildSquares } from "@/utilities/board";
+
 const emit = defineEmits<{
-  (
-    e: "square-click",
-    square: { file: number; rank: number; notation: string }
-  ): void;
+  (e: "square-click", square: SquareT): void;
 }>();
 const { selectedSquares } = defineProps<{
   selectedSquares: Set<string>;
 }>();
 
-const ranks = 8;
-const files = 8;
-const squares = buildSquares({ ranks, files });
+const squares = buildSquares();
 
 const handleSquareClick = (square: {
   file: number;
@@ -40,11 +37,17 @@ const handleSquareClick = (square: {
 
 <style scoped>
 section {
-  height: 100%;
-  width: 100%;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  section {
+    flex: 0 0 auto;
+    height: auto;
+  }
 }
 
 .board {
@@ -52,7 +55,18 @@ section {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
   aspect-ratio: 1 / 1;
-  width: min(90%, 90vh);
-  max-height: 90vh;
+  width: 100%;
+  height: 100%;
+  max-width: 100vh;
+  max-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .board {
+    width: 100vw;
+    height: auto;
+    max-width: 100vw;
+    max-height: none;
+  }
 }
 </style>
