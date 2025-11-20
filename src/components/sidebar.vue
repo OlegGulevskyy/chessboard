@@ -23,10 +23,11 @@ const { history, reset } = defineProps<{
 
 <style scoped>
 section {
-  height: 100%;
+  height: 95%;
   min-width: 300px;
   max-width: 400px;
   display: flex;
+  padding-right: 12px;
 }
 
 .reset {
@@ -71,6 +72,7 @@ h1 {
   flex-direction: column;
   background-color: #262522;
   overflow-y: auto;
+  border-radius: 0.5rem;
 }
 
 .history {
@@ -83,19 +85,21 @@ h1 {
 }
 
 @media (max-width: 768px) {
+  section {
+    padding: 0;
+  }
   .selection {
-    padding: 16px;
     gap: 12px;
     height: 100%;
   }
 
   h1 {
-    padding: 0px;
+    padding: 12px;
     font-size: 1.2rem;
   }
 
   .history {
-    padding: 0;
+    padding: 12px;
   }
 }
 </style>

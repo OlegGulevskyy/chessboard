@@ -25,7 +25,7 @@
   .root {
     flex-direction: column;
     padding: 0;
-    gap: 0;
+    gap: 12px;
   }
 }
 </style>

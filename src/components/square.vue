@@ -46,7 +46,7 @@ const rankNumber = (square: string) => square.split("")[1];
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 2vw;
   color: #333;
   width: 100%;
   height: 100%;
@@ -82,7 +82,7 @@ const rankNumber = (square: string) => square.split("")[1];
 
 @media (max-width: 768px) {
   .square {
-    font-size: 1.2rem;
+    font-size: 3vw;
   }
 }
 </style>
