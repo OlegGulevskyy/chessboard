@@ -10,7 +10,7 @@ const { history, reset } = defineProps<{
     <div class="selection">
       <h1>Selections history</h1>
       <div>
-        <button @click="reset">Reset</button>
+        <button class="reset" @click="reset">Reset</button>
       </div>
       <div class="history">
         <div v-for="item in history" :key="item.order + item.notation">
@@ -29,6 +29,16 @@ section {
   display: flex;
 }
 
+.reset {
+  background-color: #739552;
+  color: #ebecd0;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   section {
     width: 100%;
@@ -45,6 +55,7 @@ h1 {
   font-size: 1.5rem;
   color: white;
   letter-spacing: 1.5px;
+  padding: 18px;
 }
 
 .selection {
@@ -52,9 +63,9 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 24px;
   background-color: #333;
   overflow-y: auto;
+  padding: 24px;
 }
 
 @media (max-width: 768px) {
@@ -63,10 +74,18 @@ h1 {
     gap: 12px;
     height: 100%;
   }
+
+  h1 {
+    padding: 0px;
+    font-size: 1.2rem;
+  }
 }
 
 .history {
   overflow-y: auto;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 </style>
