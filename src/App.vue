@@ -5,6 +5,7 @@ import Board from "@/components/board.vue";
 import { computed, ref } from "vue";
 
 const selectionHistory = ref<{ order: number; notation: string }[]>([]);
+
 const selectedSquares = computed(() => {
   const selected = new Set<string>();
   selectionHistory.value.forEach((item) => selected.add(item.notation));

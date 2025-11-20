@@ -9,10 +9,10 @@ const { history, reset } = defineProps<{
   <section>
     <div class="selection">
       <h1>Selections history</h1>
-      <div>
-        <button class="reset" @click="reset">Reset</button>
-      </div>
       <div class="history">
+        <button :disabled="history.length === 0" class="reset" @click="reset">
+          Reset
+        </button>
         <div v-for="item in history" :key="item.order + item.notation">
           {{ item.order }}. {{ item.notation }}
         </div>
@@ -37,6 +37,12 @@ section {
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
+  margin-bottom: 24px;
+}
+
+.reset:disabled {
+  opacity: 0.7;
+  cursor: default;
 }
 
 @media (max-width: 768px) {
@@ -52,20 +58,28 @@ section {
 }
 
 h1 {
-  font-size: 1.5rem;
-  color: white;
-  letter-spacing: 1.5px;
+  font-size: 1.2rem;
+  color: hsla(0, 0%, 100%, 0.85);
+  letter-spacing: 1.1px;
   padding: 18px;
+  background-color: #21201d;
 }
 
 .selection {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  background-color: #333;
+  background-color: #262522;
   overflow-y: auto;
-  padding: 24px;
+}
+
+.history {
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
 }
 
 @media (max-width: 768px) {
@@ -79,13 +93,9 @@ h1 {
     padding: 0px;
     font-size: 1.2rem;
   }
-}
 
-.history {
-  overflow-y: auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  .history {
+    padding: 0;
+  }
 }
 </style>

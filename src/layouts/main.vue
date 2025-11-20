@@ -17,7 +17,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #222c3a;
+  background-color: #302e2b;
   gap: 24px;
 }
 
