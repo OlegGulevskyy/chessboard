@@ -43,13 +43,6 @@ section {
   justify-content: center;
 }
 
-@media (max-width: 768px) {
-  section {
-    flex: 0 0 auto;
-    height: auto;
-  }
-}
-
 .board {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -67,6 +60,11 @@ section {
     height: auto;
     max-width: 100vw;
     max-height: none;
+  }
+
+  section {
+    flex: 0 0 auto;
+    height: auto;
   }
 }
 </style>

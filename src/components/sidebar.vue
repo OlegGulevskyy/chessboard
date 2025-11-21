@@ -46,18 +46,6 @@ section {
   cursor: default;
 }
 
-@media (max-width: 768px) {
-  section {
-    width: 100%;
-    flex: 1;
-    min-height: 0;
-    min-width: unset;
-    max-width: unset;
-    align-items: flex-start;
-    overflow: hidden;
-  }
-}
-
 h1 {
   font-size: 1.2rem;
   color: hsla(0, 0%, 100%, 0.85);
@@ -86,8 +74,16 @@ h1 {
 
 @media (max-width: 768px) {
   section {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    min-width: unset;
+    max-width: unset;
+    align-items: flex-start;
+    overflow: hidden;
     padding: 0;
   }
+
   .selection {
     gap: 12px;
     height: 100%;
