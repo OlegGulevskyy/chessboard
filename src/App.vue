@@ -10,9 +10,9 @@ import SuperSecret from "@/components/super-secret-file.vue";
 const selectionHistory = ref<{ order: number; notation: string }[]>([]);
 
 const selectedSquares = computed(() => {
-  const selected = new Set<string>();
-  selectionHistory.value.forEach((item) => selected.add(item.notation));
-  return selected;
+  return new Set<string>([
+    ...selectionHistory.value.map((item) => item.notation),
+  ]);
 });
 
 const onSquareClick = ({ notation }: { notation: string }) => {
